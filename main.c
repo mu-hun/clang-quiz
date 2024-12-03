@@ -90,7 +90,7 @@ int main() {
     }
 
     const int numQuestions = (rand() % numQuizzes) + 1;
-    printf("총 %d개의 문제를 출제합니다.\n", numQuestions);
+    printf("총 %zu의 문제 중에 랜덤으로 %d개의 문제를 뽑아 출제합니다.\n", numQuizzes, numQuestions);
 
     if (numQuestions < 1 || numQuestions > numQuizzes) {
         printf("잘못된 문제 수입니다. 종료합니다.\n");
