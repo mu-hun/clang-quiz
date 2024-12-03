@@ -89,7 +89,7 @@ int main() {
         quizzes[i].answer = json_object_get_int(answerJson);
     }
 
-    int numQuestions = (rand() % numQuizzes) + 1;
+    const int numQuestions = (rand() % numQuizzes) + 1;
     printf("총 %d개의 문제를 출제합니다.\n", numQuestions);
 
     if (numQuestions < 1 || numQuestions > numQuizzes) {
