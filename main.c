@@ -8,7 +8,7 @@
 typedef struct {
     char question[100];
     char options[4][50];
-    char answer[50];
+    int answer;
 } Quiz;
 
 void decryptGPG(const char *encryptedFile, char **decryptedString) {
@@ -86,8 +86,7 @@ int main() {
             quizzes[i].options[j][sizeof(quizzes[i].options[j]) - 1] = '\0';
         }
 
-        strncpy(quizzes[i].answer, json_object_get_string(answerJson), sizeof(quizzes[i].answer) - 1);
-        quizzes[i].answer[sizeof(quizzes[i].answer) - 1] = '\0';
+        quizzes[i].answer = json_object_get_int(answerJson);
     }
 
     int numQuestions = (rand() % numQuizzes) + 1;
@@ -119,19 +118,11 @@ int main() {
         printf("정답을 입력하세요: ");
         scanf("%d", &userAnswer);
 
-        int correctAnswerIndex = -1;
-        for (int j = 0; j < 4; j++) {
-            if (strcmp(quizzes[quizIndex].options[j], quizzes[quizIndex].answer) == 0) {
-                correctAnswerIndex = j + 1;
-                break;
-            }
-        }
-
-        if (userAnswer == correctAnswerIndex) {
+        if (userAnswer - 1 == quizzes[quizIndex].answer) {
             printf("정답입니다!\n");
             score++;
         } else {
-            printf("오답입니다! 정답은 %s 입니다.\n", quizzes[quizIndex].answer);
+            printf("오답입니다! 정답은 %s 입니다.\n", quizzes[quizIndex].options[quizzes[quizIndex].answer]);
         }
         printf("\n");
     }

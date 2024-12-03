@@ -43,12 +43,12 @@
          {
            "question": "What is the capital of France?",
            "options": ["Paris", "London", "Berlin", "Madrid"],
-           "answer": "Paris"
+           "answer": 0
          },
          {
            "question": "What is the capital of Germany?",
            "options": ["Paris", "London", "Berlin", "Madrid"],
-           "answer": "Berlin"
+           "answer": 2
          }
       ]
    }
